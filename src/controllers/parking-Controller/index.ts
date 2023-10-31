@@ -14,3 +14,15 @@ export async function ParkEntry(req:Request,res:Response) {
    
     
 }
+
+export async function ParkHistory(req:Request,res:Response){
+    const {token} = req.headers
+
+    try{
+        const result = await parkService.ParkHistory(String(token))
+        res.status(httpStatus.OK).send(result)
+
+    }catch(error){
+        res.status(httpStatus.BAD_REQUEST).send(error.message)
+    }
+}

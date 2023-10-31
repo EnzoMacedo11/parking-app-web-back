@@ -8,8 +8,14 @@ export async function ParkEntry(token:string) {
     
 }
 
+export async function ParkHistory(token:string) {
+    return parkRepository.ParkHistory(token)
+    
+}
+
 const parkService = {
-    ParkEntry
+    ParkEntry,
+    ParkHistory
 }
 
 export default parkService

@@ -21,8 +21,20 @@ async function ParkEntry(token:string) {
     }
 }
 
+async function ParkHistory(token:string) {
+    const tokenUser = await prisma.user.findFirst({
+        where:{token}
+    })
+    if(tokenUser.admin === true){
+        return await prisma.history.findMany()
+    }else{
+        throw new Error("Está pesquisa é apenas para adminstradores.")
+    }
+    
+}
+
 const parkRepository = {
-    ParkEntry
+    ParkEntry,ParkHistory
 }
 
 export default parkRepository
