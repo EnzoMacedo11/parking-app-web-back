@@ -5,6 +5,7 @@ import cors from "cors";
 
 import { loadEnv, connectDb, disconnectDB } from "./config";
 import userRouter from "./routers/user-router";
+import parkRouter from "./routers/parking-router";
 
 loadEnv();
 
@@ -13,6 +14,7 @@ app
   .use(cors())
   .use(express.json())
   .use("/user",userRouter)
+  .use("/park",parkRouter)
 
 
 export function init(): Promise<Express> {

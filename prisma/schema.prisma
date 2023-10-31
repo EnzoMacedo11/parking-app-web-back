@@ -16,3 +16,10 @@ model User {
     admin Boolean
     token String
 }
+
+model History {
+    id Int @id @default(autoincrement())
+    enrollment String 
+    token String
+    createdAt DateTime @default(now())
+}

@@ -36,7 +36,7 @@ async function findUser(enrollment: string, password: string) {
     },
   });
   if (!user) {
-    throw new Error("Matrícula e/ou senha incorretas1");
+    throw new Error("Matrícula e/ou senha incorretas");
   }
 
   if (user) {
@@ -45,7 +45,7 @@ async function findUser(enrollment: string, password: string) {
       const { name, token, admin } = user;
       return { name, token, admin };
     } else {
-      throw new Error("Matrícula e/ou senha incorretas2");
+      throw new Error("Matrícula e/ou senha incorretas");
     }
   }
 }
