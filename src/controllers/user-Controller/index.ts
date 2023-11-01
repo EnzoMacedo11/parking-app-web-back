@@ -26,3 +26,15 @@ export async function signIn(req:Request,res:Response) {
     }
     
 }
+
+export async function getUser(req:Request,res:Response){
+    const {token} = req.headers
+
+    try{
+        const result = await userService.getUser(String(token))
+        return res.status(httpStatus.OK).send(result)
+    }
+    catch(e){
+        return res.status(httpStatus.NOT_FOUND).send(e.message)
+    }
+}

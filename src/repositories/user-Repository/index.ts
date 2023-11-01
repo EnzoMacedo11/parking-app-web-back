@@ -50,9 +50,26 @@ async function findUser(enrollment: string, password: string) {
   }
 }
 
+async function getUser(token:string) {
+  const user = await prisma.user.findFirst({
+    where:{
+      token
+    }
+  })
+  
+  if(user){
+    const {name, enrollment} = user
+    return {name, enrollment}
+  }
+  else{
+    throw new Error("Token Inválido")
+  }
+}
+
 const userRepository = {
   createUser,
   findUser,
+  getUser
 };
 
 export default userRepository;

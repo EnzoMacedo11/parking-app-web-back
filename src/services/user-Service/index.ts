@@ -23,8 +23,15 @@ export async function findUser(enrollment:string,password:string) {
 }
 
 
+export async function getUser(token:string) {
+    return userRepository.getUser(
+        token
+    )
+}
+
+
 const userService = {
-    createUser,findUser
+    createUser,findUser,getUser
 }
     
 
